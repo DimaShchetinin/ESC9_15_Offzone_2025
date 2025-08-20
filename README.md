@@ -1,0 +1,2 @@
+# Детектирование техник ESC9-15 ADCS
+Данный проект содержит сопроводительные материалы к докладу [Детектирование техник ESC9-15 ADCS](https://offzone.moscow/program/detection-of-esc9-15-adcs-techniques/)

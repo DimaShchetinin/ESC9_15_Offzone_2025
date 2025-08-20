@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    container_name: elasticsearch
+    # restart: always
+    environment:
+      - ELASTIC_SECURITY=true
+      - ELASTIC_PASSWORD=elastic
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - cluster.name=elasticsearch
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - xpack.security.enabled=true
+    mem_limit: 2G
+    mem_reservation: 2G
+    volumes:
+      - ./elasticsearch-data-volume:/usr/share/elasticsearch/data
+    ports:
+      - 0.0.0.0:9200:9200
+      - 0.0.0.0:9300:9300
+    networks:
+      - es-network
+
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.15.1
+    # restart: always
+    environment:
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=elastic
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
+    mem_limit: 1G
+    mem_reservation: 1G
+    links:
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    networks:
+      - es-network
+    ports:
+      - "0.0.0.0:5601:5601"
+
+volumes: 
+  elasticsearch-data-volume:

@@ -1,4 +1,4 @@
-### Примеры logstash-конфигов
+### Examples of logstash configs
 
 ```
 if [winlog][event_id] == "5136" and [winlog][event_data][AttributeLDAPDisplayName] == "msPKI-Enrollment-Flag" {

@@ -140,3 +140,4 @@ If the playbook doesn’t work, you can install it manually:
 9. Enable updates on SRV03 and DC03. The easiest way is to use [enable updates.bat](https://github.com/tsgrgo/windows-update-disabler)
 10. Update SRV03 and DC03
 11. Install [KALI](https://www.kali.org/get-kali/#kali-virtual-machines) and the latest version of [certipy](https://github.com/ly4k/Certipy/wiki/04-‐-Installation) (preferably from source)
+12. If you want to use a modified script to retrieve information about issued certificates from the ADCS database, use the script [Get-CertRequest.ps1](https://github.com/DimaShchetinin/PSPKIAudit/blob/main/Code/Get-CertRequest.ps1) from the [PSPKIAudit fork](https://github.com/DimaShchetinin/PSPKIAudit). Installation instructions can be found there as well.
